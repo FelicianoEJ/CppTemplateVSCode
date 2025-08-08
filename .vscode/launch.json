@@ -9,10 +9,10 @@
             "type": "cppvsdbg",
             "preLaunchTask": "Build",
             "request": "launch",
+            "cwd": "${workspaceFolder}\\bin",
             "program": "${workspaceFolder}\\bin\\main.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
             "environment": [],
             "console": "internalConsole"
         },
@@ -21,24 +21,26 @@
             "type": "cppvsdbg",
             "preLaunchTask": "Build",
             "request": "launch",
+            "cwd": "${workspaceFolder}\\bin",
             "program": "${workspaceFolder}\\bin\\main.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
             "environment": [],
             "console": "integratedTerminal"
         },
         {
-            "name": "Launch Ext",
+            "name": "Attach",
             "type": "cppvsdbg",
-            "preLaunchTask": "Build",
-            "request": "launch",
-            "program": "${workspaceFolder}\\bin\\main.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "console": "externalTerminal"
+            "request": "attach",
+            "processId": "${input:pid}",
+        }
+    ],
+    "inputs": [
+        {
+            "id": "pid",
+            "type": "promptString",
+            "description": "Enter the process ID to attach to",
+            "default": ""
         }
     ]
 }
