@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        "**/.git": false,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "terminal.integrated.defaultProfile.windows": "Developer PowerShell",
+    "terminal.integrated.automationProfile.windows": {
+        "path": "pwsh.exe",
+        "icon": "terminal-powershell",
+        "args": [
+            "-NoExit",
+            "-Command",
+            "& { Import-Module 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SkipAutomaticLocation -SetDefaultWindowTitle -InstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community'}"
+        ]
+    },
+    "C_Cpp.default.cppStandard": "c++23",
+    "C_Cpp.default.cStandard": "c23",
+    "C_Cpp.default.windowsSdkVersion": "10.0.26100.0"
+}
