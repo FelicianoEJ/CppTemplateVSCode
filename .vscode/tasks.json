@@ -23,13 +23,14 @@
             "command": "cl",
             "args": [
                 "/std:c++23preview",
-                "/Zi",
                 "/EHsc",
+                "/Zi",
                 "/nologo",
-                "/Fe:${workspaceFolder}\\bin\\",
-                "/Fo:${workspaceFolder}\\bin\\",
-                "/Fd:${workspaceFolder}\\bin\\",
-                "main.cpp"
+                "/Fe:${workspaceFolder}\\build\\",
+                "/Fo:${workspaceFolder}\\build\\",
+                "/Fd:${workspaceFolder}\\build\\",
+                "/Iinclude",
+                "${workspaceFolder}\\src\\*.cpp"
             ],
             "problemMatcher": [
                 "$msCompile"
@@ -58,13 +59,14 @@
             "command": "cl",
             "args": [
                 "/std:c++23preview",
-                "/Zi",
                 "/EHsc",
+                "/Zi",
                 "/nologo",
-                "/Fe:${workspaceFolder}\\bin\\",
-                "/Fo:${workspaceFolder}\\bin\\",
-                "/Fd:${workspaceFolder}\\bin\\",
-                "main.cpp"
+                "/Fe:${workspaceFolder}\\build\\",
+                "/Fo:${workspaceFolder}\\build\\",
+                "/Fd:${workspaceFolder}\\build\\",
+                "/Iinclude",
+                "${workspaceFolder}\\src\\main.cpp"
             ],
             "problemMatcher": [
                 "$msCompile"

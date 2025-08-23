@@ -1,9 +1,7 @@
-#include <print>
-#include <filesystem>
+#include "utility.h"
 
-int main(int argc, char const *argv[])
+void Utility::PrintCurrentWorkingDirectory()
 {
     std::filesystem::path cwd = std::filesystem::current_path();
     std::println("Current working directory: {}", cwd.string());
-    return 0;
 }
