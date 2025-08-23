@@ -1,11 +1,60 @@
 {
     "tasks": [
+        // 64 Bit
         {
             "label": "Build",
             "detail": "Build the project in x64 using Powershell Developer Command Prompt.",
             "group": {
                 "kind": "build",
                 "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Build Library",
+                "Copy DLL"
+            ],
+            "options": {
+                "shell": {
+                    "executable": "pwsh.exe",
+                    "args": [
+                        // "-ExecutionPolicy",
+                        // "Bypass",
+                        "-Command",
+                        "Import-Module 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
+                    ]
+                },
+            },
+            "type": "shell",
+            "command": "cl",
+            "args": [
+                "/std:c++23preview",
+                "/nologo",
+                "/EHsc",
+                "/Od",
+                "/GS",
+                "/MP",
+                "/Zi",
+                "/Fa${workspaceFolder}\\build\\int\\",
+                "/Fd${workspaceFolder}\\build\\int\\",
+                "/Fo${workspaceFolder}\\build\\int\\",
+                "/Fe${workspaceFolder}\\build\\",
+                "/Iinclude",
+                "/Ilib\\include",
+                "${workspaceFolder}\\src\\**.cpp",
+                "/link",
+                "/LIBPATH:\"${workspaceFolder}\\build\\lib\"",
+                "my_math.lib"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+            "label": "Build Library",
+            "detail": "Build custom library.",
+            "group": {
+                "kind": "build",
+                "isDefault": false
             },
             "options": {
                 "shell": {
@@ -19,29 +68,36 @@
                 },
             },
             "type": "shell",
-            // "command": "env",
             "command": "cl",
             "args": [
                 "/std:c++23preview",
-                "/EHsc",
-                "/Zi",
                 "/nologo",
-                "/Fe:${workspaceFolder}\\build\\",
-                "/Fo:${workspaceFolder}\\build\\",
-                "/Fd:${workspaceFolder}\\build\\",
-                "/Iinclude",
-                "${workspaceFolder}\\src\\*.cpp"
+                "/EHsc",
+                "/Od",
+                "/GS",
+                "/MP",
+                "/Zi",
+                "/Fa${workspaceFolder}\\build\\lib\\int\\",
+                "/Fo${workspaceFolder}\\build\\lib\\int\\",
+                "/Fd${workspaceFolder}\\build\\lib\\int\\",
+                "/Fe${workspaceFolder}\\build\\lib\\",
+                "/Ilib\\include",
+                "/D",
+                "API_EXPORTS",
+                "/LD",
+                "${workspaceFolder}\\lib\\src\\**.cpp"
             ],
             "problemMatcher": [
                 "$msCompile"
             ]
         },
+        // 32 Bit
         {
             "label": "Build32",
             "detail": "Build the project in x32 using Powershell Developer Command Prompt.",
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             },
             "options": {
                 "shell": {
@@ -55,22 +111,58 @@
                 },
             },
             "type": "shell",
-            // "command": "env",
             "command": "cl",
             "args": [
                 "/std:c++23preview",
-                "/EHsc",
-                "/Zi",
                 "/nologo",
-                "/Fe:${workspaceFolder}\\build\\",
-                "/Fo:${workspaceFolder}\\build\\",
-                "/Fd:${workspaceFolder}\\build\\",
+                "/EHsc",
+                "/Od",
+                "/GS",
+                "/MP",
+                "/Zi",
+                "/Fa${workspaceFolder}\\build\\int\\",
+                "/Fe${workspaceFolder}\\build\\int\\",
+                "/Fo${workspaceFolder}\\build\\int\\",
+                "/Fd${workspaceFolder}\\build\\",
                 "/Iinclude",
-                "${workspaceFolder}\\src\\main.cpp"
+                "${workspaceFolder}\\src\\**.cpp"
             ],
             "problemMatcher": [
                 "$msCompile"
             ]
+        },
+        // Additional Tasks
+        {
+            "label": "Copy DLL",
+            "type": "shell",
+            "options": {
+                "shell": {
+                    "executable": "pwsh.exe",
+                    "args": [
+                        // "-ExecutionPolicy",
+                        // "Bypass",
+                        "-Command",
+                        "Import-Module 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
+                    ]
+                },
+            },
+            "command": "Copy-Item -Path \"${workspaceFolder}\\build\\lib\\*.dll\" -Destination \"${workspaceFolder}\\build\""
+        },
+        {
+            "label": "Init Build Directory",
+            "type": "shell",
+            "options": {
+                "shell": {
+                    "executable": "pwsh.exe",
+                    "args": [
+                        // "-ExecutionPolicy",
+                        // "Bypass",
+                        "-Command",
+                        "Import-Module 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
+                    ]
+                },
+            },
+            "command": "New-Item -Path \"${workspaceFolder}\\build\\int\", \"${workspaceFolder}\\build\\lib\\int\" -ItemType Directory -Force"
         }
     ],
     "version": "2.0.0"

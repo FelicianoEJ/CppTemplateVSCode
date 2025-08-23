@@ -6,12 +6,14 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/include"
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/lib/include"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
+                // "API_EXPORTS"
             ],
             "compilerPath": "cl.exe",
             "intelliSenseMode": "windows-msvc-x64"
