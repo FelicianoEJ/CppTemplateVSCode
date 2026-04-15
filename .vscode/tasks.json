@@ -13,17 +13,17 @@
                 "Build Library",
                 "Copy DLL"
             ],
-            "options": {
-                "shell": {
-                    "executable": "pwsh.exe",
-                    "args": [
-                        // "-ExecutionPolicy",
-                        // "Bypass",
-                        "-Command",
-                        "Import-Module 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
-                    ]
-                },
-            },
+            // "options": {
+            //     "shell": {
+            //         "executable": "pwsh.exe",
+            //         "args": [
+            //             // "-ExecutionPolicy",
+            //             // "Bypass",
+            //             "-Command",
+            //             "Import-Module 'C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
+            //         ]
+            //     },
+            // },
             "type": "shell",
             "command": "cl",
             "args": [
@@ -56,17 +56,17 @@
                 "kind": "build",
                 "isDefault": false
             },
-            "options": {
-                "shell": {
-                    "executable": "pwsh.exe",
-                    "args": [
-                        // "-ExecutionPolicy",
-                        // "Bypass",
-                        "-Command",
-                        "Import-Module 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
-                    ]
-                },
-            },
+            // "options": {
+            //     "shell": {
+            //         "executable": "pwsh.exe",
+            //         "args": [
+            //             // "-ExecutionPolicy",
+            //             // "Bypass",
+            //             "-Command",
+            //             "Import-Module 'C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
+            //         ]
+            //     },
+            // },
             "type": "shell",
             "command": "cl",
             "args": [
@@ -99,17 +99,17 @@
                 "kind": "build",
                 "isDefault": false
             },
-            "options": {
-                "shell": {
-                    "executable": "pwsh.exe",
-                    "args": [
-                        // "-ExecutionPolicy",
-                        // "Bypass",
-                        "-Command",
-                        "Import-Module 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x86 -host_arch=x86' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
-                    ]
-                },
-            },
+            // "options": {
+            //     "shell": {
+            //         "executable": "pwsh.exe",
+            //         "args": [
+            //             // "-ExecutionPolicy",
+            //             // "Bypass",
+            //             "-Command",
+            //             "Import-Module 'C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x86 -host_arch=x86' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
+            //         ]
+            //     },
+            // },
             "type": "shell",
             "command": "cl",
             "args": [
@@ -134,34 +134,36 @@
         // Additional Tasks
         {
             "label": "Copy DLL",
+            "detail": "Copy build/lib/*.dll to build/ directory.",
             "type": "shell",
-            "options": {
-                "shell": {
-                    "executable": "pwsh.exe",
-                    "args": [
-                        // "-ExecutionPolicy",
-                        // "Bypass",
-                        "-Command",
-                        "Import-Module 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
-                    ]
-                },
-            },
+            // "options": {
+            //     "shell": {
+            //         "executable": "pwsh.exe",
+            //         "args": [
+            //             // "-ExecutionPolicy",
+            //             // "Bypass",
+            //             "-Command",
+            //             "Import-Module 'C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
+            //         ]
+            //     },
+            // },
             "command": "Copy-Item -Path \"${workspaceFolder}\\build\\lib\\*.dll\" -Destination \"${workspaceFolder}\\build\""
         },
         {
             "label": "Init Build Directory",
+            "detail": "Initialize all the necessary libraries for the compiler intermediate files.",
             "type": "shell",
-            "options": {
-                "shell": {
-                    "executable": "pwsh.exe",
-                    "args": [
-                        // "-ExecutionPolicy",
-                        // "Bypass",
-                        "-Command",
-                        "Import-Module 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
-                    ]
-                },
-            },
+            // "options": {
+            //     "shell": {
+            //         "executable": "pwsh.exe",
+            //         "args": [
+            //             // "-ExecutionPolicy",
+            //             // "Bypass",
+            //             "-Command",
+            //             "Import-Module 'C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -SetDefaultWindowTitle -DevCmdArguments '-arch=x64 -host_arch=x64' -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -SkipAutomaticLocation;"
+            //         ]
+            //     },
+            // },
             "command": "New-Item -Path \"${workspaceFolder}\\build\\int\", \"${workspaceFolder}\\build\\lib\\int\" -ItemType Directory -Force"
         }
     ],

@@ -13,9 +13,8 @@
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
-                // "API_EXPORTS"
             ],
-            "compilerPath": "cl.exe",
+            "compilerPath": "c:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe",
             "intelliSenseMode": "windows-msvc-x64"
         }
     ],
