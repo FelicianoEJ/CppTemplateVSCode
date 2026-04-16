@@ -6,7 +6,7 @@
 class MyMath
 {
 public:
-	__APP_API static int Sum(int a, int b);
+	__APP_API static int Sum(size_t a, size_t b);
 };
 
 #endif // MY_MATH_H

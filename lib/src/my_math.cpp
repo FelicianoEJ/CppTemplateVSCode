@@ -1,6 +1,6 @@
 #include "my_math.h"
 
-int MyMath::Sum(int a, int b)
+int MyMath::Sum(size_t a, size_t b)
 {
 	return a + b;
 }
